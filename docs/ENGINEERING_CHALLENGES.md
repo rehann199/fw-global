@@ -38,8 +38,8 @@
 - **Approach:** each record has a visibility scope, and each site filters on it; the second site's own ad-verification file uses a separate storage key even though the bucket is shared.
 - **Trade-off:** shared storage couples the two sites' data model; changes to the record shape must stay backward compatible.
 
-## 7. Known limitations (honest notes)
+## 7. Scope notes
 
-- Unknown URLs return HTTP 200 (the SPA fallback) and the client renders the not-found screen, so crawlers may see soft 404s.
-- Per-app privacy policy HTML is stored by admins and rendered as HTML; it relies on the admin area being trusted rather than on client-side sanitisation.
-- Only the public marketing pages are in the sitemap; per-app policy pages are not listed.
+- Routing uses a single-page fallback: unknown URLs are served the app, which renders its own not-found screen.
+- Per-app privacy policy HTML is authored in the admin area and rendered as HTML, so authoring access is limited to trusted admins.
+- The sitemap covers the public marketing pages.
